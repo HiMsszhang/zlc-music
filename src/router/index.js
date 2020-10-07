@@ -4,36 +4,41 @@ import home from '../components/home.vue'
 import topBar from "@/components/topBar.vue";
 import leftBar from "@/components/leftBar.vue";
 import player from "@/components/player";
-import recommendList from '../views/recommendList.vue'
+import recommendList from '@/views/recommendList.vue'
 import app from '../App.vue'
 Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
     name: 'app',
-    components: {
-      home: home,
-      topBar: topBar,
-      leftBar: leftBar,
-      player: player,
-      default: app
-    },
+    redirect: '/home'
   },
   {
     path: '/home',
     name: 'home',
     components: {
-      recommend: recommendList,
+      topBar: topBar,
+      leftBar: leftBar,
+      player: player,
       default: home
-    },
-    children: [
-      {
-        path: 'recommend/:id',
-        name: 'recommend',
-        component: recommendList,
-      },
-    ]
+    }
   },
+  {
+    path: '/recommend/:id',
+    name: 'recommend',
+    components: {
+      topBar: topBar,
+      leftBar: leftBar,
+      player: player,
+      default: recommendList
+    }
+  },
+  {
+    path: '/test',
+    name: 'test',
+
+  }
+
 
 
 ]

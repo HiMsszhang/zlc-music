@@ -112,7 +112,7 @@ export default {
     }).then((res) => {
       // console.log(res);
       this.playList = res.data.songs;
-      console.log(this.playList)
+      // console.log(this.playList)
       this.songsId = res.data.songs[this.currentIndex].id;
       // console.log(this.currentIndex);
       //  console.log(this.songsId);

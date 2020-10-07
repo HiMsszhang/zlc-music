@@ -18,7 +18,7 @@
           :key="item.id"
           :index="index"
           :playlist="item"
-          :to="'/recommendList/'+item.id"
+          :to="'recommend/'+item.id"
         >
           <div>
             <img :src="item.picUrl" width="100%" height="100%" />
@@ -27,7 +27,7 @@
         </router-link>
       </div>
     </div>
-    <router-view name="recommendList" />
+<!--    <router-view name="recommendList" />-->
   </div>
 
 </template>
@@ -61,7 +61,7 @@ export default {
     }).then((res) => {
       // console.log(res);
       this.recommendList = res.data.result;
-      console.log(this.recommendList);
+      // console.log(this.recommendList);
     });
   },
   mounted() {},

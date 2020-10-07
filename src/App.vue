@@ -10,7 +10,7 @@
         /></el-aside>
         <el-container>
           <el-main>
-            <router-view name="home" />
+            <router-view  />
           </el-main>
         </el-container>
       </el-container>

@@ -10,12 +10,11 @@
     </div>
     <div>
       <ul>
-        <li v-for="(item, index) in reDetail.tracks" :key="item.id">
-          0{{ index + 1 }}{{ item.name }}
+        <li v-for="(item, index) in list" :key="item.id">
+          {{ index + 1 }}{{ item.name }}
         </li>
       </ul>
     </div>
-    <router-view/>
   </div>
 </template>
 
@@ -26,6 +25,7 @@ export default {
   data() {
     return {
       reDetail: "",
+      list: [],
     };
   },
   mounted() {
@@ -36,27 +36,27 @@ export default {
 
   },
   created() {
+    debugger
     request({
       url: "/playlist/detail",
       params: {
-        id: this.$route.params.id,
+        id: decodeURI(this.$route.params.id),
       },
     }).then((res) => {
-      console.log(res);
       this.reDetail = res.data.playlist;
-      console.log(this.reDetail);
-       for (let i = 0; i < this.reDetail.trackIds.lenth; i++) {
-        console.log(this.reDetail.trackIds);
+       for (let i = 0; i < this.reDetail.trackIds.length; i++) {
+        // console.log(this.reDetail.trackIds);
+        debugger
         request({
-      url: "/song/url",
+      url: "/song/detail",
       params: {
-        id: this.reDetail.trackIds[i],
+        ids: this.reDetail.trackIds[i].id,
       },
     }).then((res)=>{
-      console.log(res);
+          this.list.push(res.data.songs[0])
     })
       }
-    });
+    })
   },
 };
 </script>
@@ -64,7 +64,7 @@ export default {
 <style lang="less">
 .detail {
   width: 100%;
-  height: 100%;
+  height: 89vh;
 }
 .detail-b {
   display: flex;

@@ -36,7 +36,6 @@ const routes = [
   {
     path: '/test',
     name: 'test',
-
   }
 
 

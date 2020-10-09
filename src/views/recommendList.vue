@@ -12,6 +12,7 @@
       <ul>
         <li v-for="(item, index) in list" :key="item.id">
           {{ index + 1 }}{{ item.name }}
+          <div>我爱你</div>
         </li>
       </ul>
     </div>
